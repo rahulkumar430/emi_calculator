@@ -159,3 +159,16 @@ thead th.text-danger {
 	width: 1em;
 	text-align: center;
 }
+
+.accordion-button {
+	font-weight: 600;
+}
+
+.accordion-body {
+	color: var(--bs-body-color);
+	line-height: 1.6;
+}
+
+footer p {
+	line-height: 1.4;
+}

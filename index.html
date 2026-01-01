@@ -11,6 +11,12 @@
     <!-- Meta Description -->
     <meta name="description"
         content="Calculate the real cost of No-Cost EMI in India. See GST on interest, processing fees, and actual money paid with a detailed monthly breakdown.">
+    <!-- Open Graph (SOCIAL SHARING) -->
+    <meta property="og:title" content="No-Cost EMI Calculator">
+    <meta property="og:description"
+        content="Calculate the real cost of No-Cost EMI including GST on interest and processing fees.">
+    <meta property="og:url" content="https://real-no-cost-emi-calculator.vercel.app/">
+    <meta property="og:type" content="website">
 
     <!-- ================= THEME (prevents CLS) ================= -->
     <script>
@@ -39,10 +45,12 @@
     <noscript>
         <link rel="stylesheet" href="styles.css">
     </noscript>
+
+    <link rel="canonical" href="https://real-no-cost-emi-calculator.vercel.app/">
 </head>
 
 
-<body class="bg-body">
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Header -->
     <nav class="navbar navbar-expand-lg border-bottom bg-body sticky-top">
@@ -56,10 +64,45 @@
         </div>
     </nav>
 
-    <main class="container my-4">
+    <main class="flex-grow-1 container my-4">
+        <section class="mt-2">
+
+            <h2 class="fs-4">What is a No-Cost EMI?</h2>
+
+            <!-- Always visible short summary -->
+            <p class="mb-2">
+                No-Cost EMI lets you split payments without visible interest, but GST and fees
+                still increase the actual amount you pay.
+            </p>
+
+            <!-- Toggle button (mobile-first) -->
+            <button class="btn btn-link p-0 d-md-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#emiExplanation" aria-expanded="false" aria-controls="emiExplanation">
+                Read more
+            </button>
+
+            <!-- Collapsible detailed content -->
+            <div id="emiExplanation" class="collapse d-md-block mt-2">
+                <p>
+                    In a No-Cost EMI, the seller provides an upfront discount equal to the interest
+                    charged by the bank, making the EMI appear interest-free. However, GST is still
+                    charged on the interest amount and processing fees, which increases the actual
+                    amount you pay.
+                </p>
+
+                <h2 class="fs-4">Why do No-Cost EMI calculators give different results?</h2>
+                <p>
+                    Many calculators simplify No-Cost EMI by ignoring reducing-balance interest,
+                    GST timing, or processing fees. This calculator shows the real monthly cash
+                    outflow based on how banks actually compute EMIs.
+                </p>
+            </div>
+
+        </section>
+
 
         <!-- Form Card -->
-        <div class="card shadow-sm mb-4">
+        <div class="card shadow-sm my-4">
             <div class="card-body">
                 <h2 class="card-title mb-4 fs-3">Loan Details</h2>
 
@@ -231,7 +274,92 @@
             </div>
 
         </div>
+
+        <section class="mt-5" id="faq">
+            <h5 class="fs-4 mb-3">Frequently Asked Questions</h5>
+
+            <div class="accordion" id="faqAccordion">
+
+                <!-- FAQ 1 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="faqHeadingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faqOne" aria-expanded="false" aria-controls="faqOne">
+                            Is No-Cost EMI really free?
+                        </button>
+                    </h3>
+                    <div id="faqOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No. In a No-Cost EMI, the bank still charges interest on the loan, but the
+                            seller provides an upfront discount equal to this interest. However, GST
+                            on the interest amount and any processing fees are still paid by the
+                            customer.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="faqHeadingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faqTwo" aria-expanded="false" aria-controls="faqTwo">
+                            Why is GST charged on No-Cost EMI?
+                        </button>
+                    </h3>
+                    <div id="faqTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            GST is a statutory tax levied on interest income earned by the bank.
+                            Even if the interest is absorbed by the seller as a discount, GST must
+                            still be collected from the customer as per tax regulations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="faqHeadingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faqThree" aria-expanded="false" aria-controls="faqThree">
+                            Why do No-Cost EMI calculators show different results?
+                        </button>
+                    </h3>
+                    <div id="faqThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree"
+                        data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Many calculators simplify No-Cost EMI by ignoring reducing-balance
+                            interest, GST timing, or processing fees. This calculator shows the
+                            actual monthly cash outflow based on how banks compute EMIs.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
     </main>
+
+    <footer class="border-top py-4 bg-body">
+        <div class="container text-center small text-body-secondary">
+
+            <p class="mb-1">
+                © 2025 Real No-Cost EMI Calculator
+            </p>
+
+            <p class="mb-1">
+                Built to explain the real cost of No-Cost EMI including GST and processing fees.
+            </p>
+
+            <p class="mb-0">
+                <strong>Disclaimer:</strong> Calculations are indicative. Actual EMI, GST, and charges
+                may vary based on bank, issuer, and merchant terms.
+            </p>
+
+        </div>
+    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
 
