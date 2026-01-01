@@ -5,30 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real No-Cost EMI Calculator</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <h1>📊 Real No-Cost EMI Calculator</h1>
-            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-        </div>
-    </header>
+    <div class="header">
+        <h1>📊 Real No-Cost EMI Calculator</h1>
+        <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+    </div>
 
-    <!-- Main Container -->
     <div class="container">
         <!-- Input Section -->
-        <section class="form-section">
+        <div class="form-section">
             <h2>Loan Details</h2>
-
             <div class="form-grid">
                 <div class="form-group">
                     <div class="label-wrapper">
@@ -94,11 +83,11 @@
                 <button class="btn btn-primary" id="calculateBtn">Calculate</button>
                 <button class="btn btn-secondary" id="resetBtn">Reset</button>
             </div>
-        </section>
+        </div>
 
         <!-- Results Section -->
-        <section id="resultsSection" class="results-section">
-            <h2 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Results & Breakdown</h2>
+        <div class="results-section" id="resultsSection">
+            <h2 style="margin-bottom: var(--space-24); font-size: 18px; font-weight: 600;">Results & Breakdown</h2>
 
             <!-- Summary Cards -->
             <div class="summary-grid">
@@ -135,8 +124,9 @@
 
             <!-- Monthly Breakdown Table -->
             <div
-                style="background-color: var(--color-bg-secondary); border-radius: 12px; padding: 20px; margin-bottom: 32px;">
-                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">Monthly Payment Breakdown</h3>
+                style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: var(--space-20); margin-bottom: var(--space-32);">
+                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: var(--space-16);">Monthly Payment Breakdown
+                </h3>
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -156,19 +146,10 @@
                     </table>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-    <!-- Custom Script -->
     <script src="script.js"></script>
+
 </body>
 
 </html>
