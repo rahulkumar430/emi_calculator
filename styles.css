@@ -87,11 +87,19 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: var(--space-20) var(--space-16);
-	background-color: var(--color-bg-secondary);
+	background-color: var(--color-surface);
 	border-bottom: 1px solid var(--color-border);
 	position: sticky;
 	top: 0;
 	z-index: 100;
+	box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .header h1 {
