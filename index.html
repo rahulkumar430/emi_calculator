@@ -5,31 +5,38 @@
     <!-- Charset & viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Real No-Cost EMI Calculator | GST & Hidden Cost Breakdown</title>
+    <title>No-Cost EMI Calculator | GST & Hidden Cost Breakdown</title>
 
-    <!-- SEO -->
+    <!-- Meta Description -->
     <meta name="description"
         content="Calculate the real cost of No-Cost EMI in India. See GST on interest, processing fees, and actual money paid with a detailed monthly breakdown.">
 
-    <!-- Preconnect fonts -->
+    <!-- ================= THEME (prevents CLS) ================= -->
+    <script>
+        (function () {
+            const theme = localStorage.getItem("emiTheme") || "dark";
+            document.documentElement.setAttribute("data-bs-theme", theme);
+        })();
+    </script>
+
+    <!-- ================= FONTS ================= -->
+    <!-- Preconnect for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Google Font (NORMAL stylesheet, NOT preload) -->
+    <!-- Google Font (LIMITED WEIGHTS to avoid CLS) -->
     <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Bootstrap CSS (non-blocking) -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    </noscript>
+    <!-- ================= BOOTSTRAP (BLOCKING ON PURPOSE) ================= -->
+    <!-- Keeping Bootstrap blocking avoids large layout shifts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <!-- Your CSS MUST come AFTER Bootstrap -->
+    <!-- ================= YOUR CSS (NON-BLOCKING) ================= -->
     <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link href="styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
     </noscript>
 </head>
 
@@ -40,7 +47,7 @@
     <nav class="navbar navbar-expand-lg border-bottom bg-body sticky-top">
         <div class="container">
             <h1 class="navbar-brand mb-0 fs-2 fw-semibold">
-                📊 Real No-Cost EMI Calculator
+                📊 No-Cost EMI Calculator
             </h1>
             <button id="themeToggle" class="btn btn-outline-secondary btn-sm text-body">
                 🌙 Dark Mode
