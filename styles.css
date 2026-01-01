@@ -11,6 +11,11 @@
 	--warning-yellow: #f59e0b;
 }
 
+body {
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+}
+
 /* Section headings */
 h1,
 h2,
@@ -147,4 +152,10 @@ thead th.text-danger {
 
 .btn-outline-secondary {
 	color: var(--bs-body-color);
+}
+
+.info-icon {
+	display: inline-block;
+	width: 1em;
+	text-align: center;
 }

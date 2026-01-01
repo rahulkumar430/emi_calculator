@@ -3,8 +3,9 @@
 
 <head>
     <!-- Charset & viewport -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real No-Cost EMI Calculator | GST & Hidden Cost Breakdown</title>
 
     <!-- SEO -->
     <meta name="description"
@@ -15,8 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Font (NORMAL stylesheet, NOT preload) -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:wght@400;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Bootstrap CSS (non-blocking) -->
@@ -60,9 +60,9 @@
                     <div class="col-md-4">
                         <label for="principal" class="form-label">
                             Principal (₹)
-                            <span data-bs-toggle="tooltip" title="Total amount you're borrowing">
-                                ℹ️
-                            </span>
+                            <span class="info-icon" role="button" tabindex="0" data-bs-toggle="tooltip"
+                                data-bs-title="Total amount you're borrowing"
+                                aria-label="Total amount you're borrowing">ℹ️</span>
                         </label>
                         <input id="principal" type="number" class="form-control" placeholder="e.g. 100000">
                     </div>
@@ -71,8 +71,9 @@
                     <div class="col-md-4">
                         <label for="rate" class="form-label">
                             Interest Rate (%)
-                            <span data-bs-toggle="tooltip"
-                                title="In No-Cost EMI, banks still charge interest (typically 12-16%), but the seller gives an upfront discount equal to this interest. This makes the EMI appear interest-free. However, GST is charged on the interest amount, and this GST is paid by you. Check the product page or payment gateway for the exact interest rate.">
+                            <span class="info-icon" role="button" tabindex="0" data-bs-toggle="tooltip"
+                                data-bs-title="In No-Cost EMI, banks still charge interest (typically 12-16%), but the seller gives an upfront discount equal to this interest. This makes the EMI appear interest-free. However, GST is charged on the interest amount, and this GST is paid by you. Check the product page or payment gateway for the exact interest rate."
+                                aria-label="Annual interest rate charged by the bank">
                                 ℹ️
                             </span>
                         </label>
@@ -83,7 +84,8 @@
                     <div class="col-md-4">
                         <label for="tenure" class="form-label">
                             Tenure (Months)
-                            <span data-bs-toggle="tooltip" title="Loan duration in months">
+                            <span class="info-icon" role="button" tabindex="0" data-bs-toggle="tooltip"
+                                data-bs-title="Loan duration in months" aria-label="Loan duration in months">
                                 ℹ️
                             </span>
                         </label>
@@ -94,7 +96,9 @@
                     <div class="col-md-4">
                         <label for="gstRate" class="form-label">
                             GST on Interest (%)
-                            <span data-bs-toggle="tooltip" title="GST charged on interest portion">
+                            <span class="info-icon" role="button" tabindex="0" data-bs-toggle="tooltip"
+                                data-bs-title="GST charged on interest portion"
+                                aria-label="GST charged on interest portion">
                                 ℹ️
                             </span>
                         </label>
@@ -105,7 +109,9 @@
                     <div class="col-md-4">
                         <label for="processingFee" class="form-label">
                             Processing Fee (₹)
-                            <span data-bs-toggle="tooltip" title="One-time fee charged in month 1">
+                            <span class="info-icon" role="button" tabindex="0" data-bs-toggle="tooltip"
+                                data-bs-title="One-time fee charged in month 1"
+                                aria-label="One-time fee charged in month 1">
                                 ℹ️
                             </span>
                         </label>
@@ -116,7 +122,8 @@
                     <div class="col-md-4">
                         <label for="processingGstRate" class="form-label">
                             GST on Processing (%)
-                            <span data-bs-toggle="tooltip" title="GST on processing fee">
+                            <span class="info-icon" role="button" tabindex="0" data-bs-toggle="tooltip"
+                                data-bs-title="GST on processing fee" aria-label="GST on processing fee">
                                 ℹ️
                             </span>
                         </label>
