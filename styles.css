@@ -144,3 +144,7 @@ thead th.text-danger {
 	padding-bottom: 0.9rem;
 	background-color: color-mix(in srgb, var(--bs-body-bg) 90%, var(--bs-border-color));
 }
+
+.btn-outline-secondary {
+	color: var(--bs-body-color);
+}

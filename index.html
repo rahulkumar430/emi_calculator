@@ -2,116 +2,141 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Real No-Cost EMI Calculator</title>
+    <!-- Charset & viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Calculate the real cost of No-Cost EMI in India. See GST on interest, processing fees, and actual money paid with a detailed monthly breakdown.">
+
+    <!-- Preconnect fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Font (NORMAL stylesheet, NOT preload) -->
     <link
         href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- Bootstrap CSS (non-blocking) -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    </noscript>
+
+    <!-- Your CSS MUST come AFTER Bootstrap -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="styles.css" rel="stylesheet">
+    </noscript>
 </head>
+
 
 <body class="bg-body">
 
     <!-- Header -->
     <nav class="navbar navbar-expand-lg border-bottom bg-body sticky-top">
         <div class="container">
-            <span class="navbar-brand fw-bold">📊 Real No-Cost EMI Calculator</span>
-            <button id="themeToggle" class="btn btn-outline-secondary btn-md">
+            <h1 class="navbar-brand mb-0 fs-2 fw-semibold">
+                📊 Real No-Cost EMI Calculator
+            </h1>
+            <button id="themeToggle" class="btn btn-outline-secondary btn-sm text-body">
                 🌙 Dark Mode
             </button>
         </div>
     </nav>
 
-    <div class="container my-4">
+    <main class="container my-4">
 
         <!-- Form Card -->
         <div class="card shadow-sm mb-4">
             <div class="card-body">
-                <h5 class="card-title mb-4">Loan Details</h5>
+                <h2 class="card-title mb-4 fs-3">Loan Details</h2>
 
                 <div class="row g-3">
                     <!-- Principal -->
                     <div class="col-md-4">
-                        <label class="form-label">
+                        <label for="principal" class="form-label">
                             Principal (₹)
                             <span data-bs-toggle="tooltip" title="Total amount you're borrowing">
                                 ℹ️
                             </span>
                         </label>
-                        <input id="principal" type="number" class="form-control" value="100000">
+                        <input id="principal" type="number" class="form-control" placeholder="e.g. 100000">
                     </div>
 
                     <!-- Rate -->
                     <div class="col-md-4">
-                        <label class="form-label">
+                        <label for="rate" class="form-label">
                             Interest Rate (%)
-                            <span data-bs-toggle="tooltip" title="Annual reducing balance interest rate">
+                            <span data-bs-toggle="tooltip"
+                                title="In No-Cost EMI, banks still charge interest (typically 12-16%), but the seller gives an upfront discount equal to this interest. This makes the EMI appear interest-free. However, GST is charged on the interest amount, and this GST is paid by you. Check the product page or payment gateway for the exact interest rate.">
                                 ℹ️
                             </span>
                         </label>
-                        <input id="rate" type="number" class="form-control" value="16">
+                        <input id="rate" type="number" class="form-control" placeholder="e.g. 16">
                     </div>
 
                     <!-- Tenure -->
                     <div class="col-md-4">
-                        <label class="form-label">
+                        <label for="tenure" class="form-label">
                             Tenure (Months)
                             <span data-bs-toggle="tooltip" title="Loan duration in months">
                                 ℹ️
                             </span>
                         </label>
-                        <input id="tenure" type="number" class="form-control" value="12">
+                        <input id="tenure" type="number" class="form-control" placeholder="e.g. 12">
                     </div>
 
                     <!-- GST Interest -->
                     <div class="col-md-4">
-                        <label class="form-label">
+                        <label for="gstRate" class="form-label">
                             GST on Interest (%)
                             <span data-bs-toggle="tooltip" title="GST charged on interest portion">
                                 ℹ️
                             </span>
                         </label>
-                        <input id="gstRate" type="number" class="form-control" value="18">
+                        <input id="gstRate" type="number" class="form-control" placeholder="e.g. 18">
                     </div>
 
                     <!-- Processing -->
                     <div class="col-md-4">
-                        <label class="form-label">
+                        <label for="processingFee" class="form-label">
                             Processing Fee (₹)
                             <span data-bs-toggle="tooltip" title="One-time fee charged in month 1">
                                 ℹ️
                             </span>
                         </label>
-                        <input id="processingFee" type="number" class="form-control" value="299">
+                        <input id="processingFee" type="number" class="form-control" placeholder="e.g. 299">
                     </div>
 
                     <!-- Processing GST -->
                     <div class="col-md-4">
-                        <label class="form-label">
+                        <label for="processingGstRate" class="form-label">
                             GST on Processing (%)
                             <span data-bs-toggle="tooltip" title="GST on processing fee">
                                 ℹ️
                             </span>
                         </label>
-                        <input id="processingGstRate" type="number" class="form-control" value="18">
+                        <input id="processingGstRate" type="number" class="form-control" placeholder="e.g. 18">
                     </div>
                 </div>
-
+                <div class="alert alert-secondary mt-2 px-3 py-1" style="font-size: 0.75rem;">
+                    ℹ️ Both GST on Interest and GST on Processing default to 18% in India currently,
+                    but you can adjust based on your specific loan terms.
+                </div>
                 <div class="d-flex gap-2 mt-4">
                     <button id="calculateBtn" class="btn btn-primary w-100">Calculate</button>
-                    <button id="resetBtn" class="btn btn-outline-secondary w-100">Reset</button>
+                    <button id="resetBtn" class="btn btn-outline-secondary w-100 text-body">Reset</button>
                 </div>
             </div>
         </div>
 
         <!-- Results -->
         <div id="resultsSection" class="d-none">
-            <h5 class="card-title mb-4">Results & Breakdown</h5>
+            <h3 class="card-title mb-4 fs-4">Results & Breakdown</h3>
             <!-- Summary Cards -->
             <div class="row g-3 mb-4">
                 <!-- Total Amount Paid -->
@@ -169,7 +194,7 @@
             <!-- Table -->
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h6 class="mb-3">Monthly Payment Breakdown</h6>
+                    <h4 class="mb-3 fs-5">Monthly Payment Breakdown</h4>
 
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered align-middle">
@@ -191,12 +216,12 @@
             </div>
 
         </div>
-    </div>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+
+    <script src="script.js" defer></script>
+
 </body>
 
 </html>
