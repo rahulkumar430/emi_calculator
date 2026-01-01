@@ -1,120 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real No-Cost EMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-    <div class="header">
-        <h1>📊 Real No-Cost EMI Calculator</h1>
-        <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-    </div>
+<body class="bg-body">
 
-    <div class="container">
-        <!-- Input Section -->
-        <div class="form-section">
-            <h2>Loan Details</h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label class="label">Principal Loan Amount (₹)</label>
-                        <div class="info-icon" data-tooltip="Total amount you're borrowing. Example: ₹100,000">ℹ️</div>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg border-bottom bg-body sticky-top">
+        <div class="container">
+            <span class="navbar-brand fw-bold">📊 Real No-Cost EMI Calculator</span>
+            <button id="themeToggle" class="btn btn-outline-secondary btn-md">
+                🌙 Dark Mode
+            </button>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+
+        <!-- Form Card -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title mb-4">Loan Details</h5>
+
+                <div class="row g-3">
+                    <!-- Principal -->
+                    <div class="col-md-4">
+                        <label class="form-label">
+                            Principal (₹)
+                            <span data-bs-toggle="tooltip" title="Total amount you're borrowing">
+                                ℹ️
+                            </span>
+                        </label>
+                        <input id="principal" type="number" class="form-control" value="100000">
                     </div>
-                    <input type="number" id="principal" class="input-field" placeholder="Enter amount" value="100000"
-                        min="1000" max="10000000">
+
+                    <!-- Rate -->
+                    <div class="col-md-4">
+                        <label class="form-label">
+                            Interest Rate (%)
+                            <span data-bs-toggle="tooltip" title="Annual reducing balance interest rate">
+                                ℹ️
+                            </span>
+                        </label>
+                        <input id="rate" type="number" class="form-control" value="16">
+                    </div>
+
+                    <!-- Tenure -->
+                    <div class="col-md-4">
+                        <label class="form-label">
+                            Tenure (Months)
+                            <span data-bs-toggle="tooltip" title="Loan duration in months">
+                                ℹ️
+                            </span>
+                        </label>
+                        <input id="tenure" type="number" class="form-control" value="12">
+                    </div>
+
+                    <!-- GST Interest -->
+                    <div class="col-md-4">
+                        <label class="form-label">
+                            GST on Interest (%)
+                            <span data-bs-toggle="tooltip" title="GST charged on interest portion">
+                                ℹ️
+                            </span>
+                        </label>
+                        <input id="gstRate" type="number" class="form-control" value="18">
+                    </div>
+
+                    <!-- Processing -->
+                    <div class="col-md-4">
+                        <label class="form-label">
+                            Processing Fee (₹)
+                            <span data-bs-toggle="tooltip" title="One-time fee charged in month 1">
+                                ℹ️
+                            </span>
+                        </label>
+                        <input id="processingFee" type="number" class="form-control" value="299">
+                    </div>
+
+                    <!-- Processing GST -->
+                    <div class="col-md-4">
+                        <label class="form-label">
+                            GST on Processing (%)
+                            <span data-bs-toggle="tooltip" title="GST on processing fee">
+                                ℹ️
+                            </span>
+                        </label>
+                        <input id="processingGstRate" type="number" class="form-control" value="18">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label class="label">Annual Interest Rate (%)</label>
-                        <div class="info-icon"
-                            data-tooltip="Yearly interest rate. Formula: Monthly Int = (Balance × Rate) ÷ 12">ℹ️</div>
-                    </div>
-                    <input type="number" id="rate" class="input-field" placeholder="Enter rate" value="12" min="0.1"
-                        max="30" step="0.1">
+                <div class="d-flex gap-2 mt-4">
+                    <button id="calculateBtn" class="btn btn-primary w-100">Calculate</button>
+                    <button id="resetBtn" class="btn btn-outline-secondary w-100">Reset</button>
                 </div>
-
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label class="label">Tenure (Months)</label>
-                        <div class="info-icon" data-tooltip="How many months to repay. Example: 24 months = 2 years">ℹ️
-                        </div>
-                    </div>
-                    <input type="number" id="tenure" class="input-field" placeholder="Enter months" value="12" min="1"
-                        max="240">
-                </div>
-
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label class="label">GST on Interest (%)</label>
-                        <div class="info-icon"
-                            data-tooltip="Tax on interest. GST Amount = Interest × (GST% ÷ 100). In India: 18%">ℹ️</div>
-                    </div>
-                    <input type="number" id="gstRate" class="input-field" placeholder="Enter GST %" value="18" min="0"
-                        max="100" step="0.1">
-                </div>
-
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label class="label">Processing Fee (₹)</label>
-                        <div class="info-icon"
-                            data-tooltip="One-time fee charged in Month 1 only. Also called conversion/EMI fee">ℹ️</div>
-                    </div>
-                    <input type="number" id="processingFee" class="input-field" placeholder="Enter fee" value="1000"
-                        min="0" max="100000">
-                </div>
-
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label class="label">GST on Processing Fee (%)</label>
-                        <div class="info-icon"
-                            data-tooltip="Tax on processing fee. GST = Fee × (18% ÷ 100). In India: 18%">ℹ️</div>
-                    </div>
-                    <input type="number" id="processingGstRate" class="input-field" placeholder="Enter GST %" value="18"
-                        min="0" max="100" step="0.1">
-                </div>
-            </div>
-
-            <div class="button-group">
-                <button class="btn btn-primary" id="calculateBtn">Calculate</button>
-                <button class="btn btn-secondary" id="resetBtn">Reset</button>
             </div>
         </div>
 
-        <!-- Results Section -->
-        <div class="results-section" id="resultsSection">
-            <h2 style="margin-bottom: var(--space-24); font-size: 18px; font-weight: 600;">Results & Breakdown</h2>
-
+        <!-- Results -->
+        <div id="resultsSection" class="d-none">
+            <h5 class="card-title mb-4">Results & Breakdown</h5>
             <!-- Summary Cards -->
-            <div class="summary-grid">
-                <div class="summary-card highlight">
-                    <div class="summary-label">Total Amount Paid</div>
-                    <div class="summary-value" id="totalAmountPaid">₹0</div>
+            <div class="row g-3 mb-4">
+                <!-- Total Amount Paid -->
+                <div class="col-md">
+                    <div class="summary-card summary-success">
+                        <div class="summary-title">Total Amount Paid</div>
+                        <div class="summary-value" id="totalAmountPaid">₹0</div>
+                    </div>
                 </div>
-                <div class="summary-card">
-                    <div class="summary-label">Total Interest Paid</div>
-                    <div class="summary-value col-interest" id="totalInterest">₹0</div>
+
+                <!-- Total Interest -->
+                <div class="col-md">
+                    <div class="summary-card summary-danger">
+                        <div class="summary-title">Total Interest Paid</div>
+                        <div class="summary-value" id="totalInterest">₹0</div>
+                    </div>
                 </div>
-                <div class="summary-card warning">
-                    <div class="summary-label">Total GST Paid</div>
-                    <div class="summary-value col-gst" id="totalGST">₹0</div>
+
+                <!-- Total GST -->
+                <div class="col-md">
+                    <div class="summary-card summary-warning">
+                        <div class="summary-title">Total GST Paid</div>
+                        <div class="summary-value" id="totalGST">₹0</div>
+                    </div>
                 </div>
-                <div class="summary-card warning">
-                    <div class="summary-label">Processing Fee + GST</div>
-                    <div class="summary-value col-processing" id="totalProcessingWithGst">₹0</div>
+
+
+                <!-- Processing Fee + GST -->
+                <div class="col-md">
+                    <div class="summary-card summary-danger">
+                        <div class="summary-title">Processing Fee + GST</div>
+                        <div class="summary-value" id="totalProcessingWithGst">₹0</div>
+                    </div>
                 </div>
-                <div class="summary-card warning">
-                    <div class="summary-label">Extra Cost Over Principal</div>
-                    <div class="summary-value col-processing" id="totalExtraCost">₹0</div>
+
+                <!-- Extra Cost -->
+                <div class="col-md">
+                    <div class="summary-card summary-danger">
+                        <div class="summary-title">Extra Cost Over Principal</div>
+                        <div class="summary-value" id="totalExtraCost">₹0</div>
+                    </div>
                 </div>
             </div>
 
+
             <!-- Explanation -->
-            <div class="explanation">
+            <div class="alert alert-warning">
                 <strong>Why is this not truly "No-Cost"?</strong><br>
                 Even though this is advertised as a No-Cost EMI, <strong>GST on interest</strong> and <strong>processing
                     fees with GST</strong> increase the actual amount you pay. The seller absorbs the interest, but GST
@@ -122,34 +166,37 @@
                 the principal amount.
             </div>
 
-            <!-- Monthly Breakdown Table -->
-            <div
-                style="background-color: var(--color-bg-secondary); border-radius: var(--radius-lg); padding: var(--space-20); margin-bottom: var(--space-32);">
-                <h3 style="font-size: 16px; font-weight: 600; margin-bottom: var(--space-16);">Monthly Payment Breakdown
-                </h3>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Month</th>
-                                <th>Remaining Balance</th>
-                                <th>Principal Repaid</th>
-                                <th>Interest Paid</th>
-                                <th>GST on Interest</th>
-                                <th>Processing Fees + GST</th>
-                                <th>Total Monthly Payment</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <!-- Populated by JavaScript -->
-                        </tbody>
-                    </table>
+            <!-- Table -->
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="mb-3">Monthly Payment Breakdown</h6>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered align-middle">
+                            <thead id="emiTableHead" class="table-dark table-group-divider">
+                                <tr>
+                                    <th>Month</th>
+                                    <th>Remaining Balance</th>
+                                    <th class="text-success">Principal Repaid</th>
+                                    <th class="text-danger">Interest Paid</th>
+                                    <th class="text-warning">GST on Interest</th>
+                                    <th>Processing Fees + GST</th>
+                                    <th>Total Monthly Payment</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
-    <script src="script.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
