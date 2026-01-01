@@ -1,4 +1,3 @@
-README.md
 📊 Real No-Cost EMI Calculator
 A transparent, single-page web application that reveals the hidden costs in "No-Cost EMI" loans by exposing interest, GST on interest, and processing fees.
 
