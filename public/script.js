@@ -64,17 +64,25 @@ function calculateEMI() {
 	let totalInterest = 0;
 	let totalGST = 0;
 
-	const totalProcessingWithGST = processingFee * (1 + gstOnProcessingRate / 100);
+	const processingGST = processingFee * (gstOnProcessingRate / 100);
+	const totalProcessingWithGST = processingFee + processingGST;
 
 	for (let m = 1; m <= tenure; m++) {
-		const interest = outstanding * monthlyRate;
+		let interest = outstanding * monthlyRate;
+		let principalPaid = emi - interest;
+
+		// ✅ LAST MONTH ADJUSTMENT (critical)
+		if (m === tenure) {
+			principalPaid = outstanding;
+			interest = emi - principalPaid;
+		}
+
 		const gstInterest = interest * (gstOnInterestRate / 100);
-		const principalPaid = emi - interest - gstInterest;
 
 		const procFee = m === 1 ? processingFee : 0;
-		const procGST = m === 1 ? processingFee * (gstOnProcessingRate / 100) : 0;
+		const procGST = m === 1 ? processingGST : 0;
 
-		const totalPayment = principalPaid + interest + gstInterest + procFee + procGST;
+		const totalPayment = emi + gstInterest + procFee + procGST;
 
 		outstanding -= principalPaid;
 
@@ -94,10 +102,8 @@ function calculateEMI() {
 		});
 	}
 
-	const totalGSTPaid = totalGST + (processingFee * gstOnProcessingRate) / 100;
-
+	const totalGSTPaid = totalGST + processingGST;
 	const totalAmountPaid = totalPrincipal + totalInterest + totalGSTPaid + processingFee;
-
 	const extraCost = totalInterest + totalGSTPaid + processingFee;
 
 	displayResults(monthlyData, {
